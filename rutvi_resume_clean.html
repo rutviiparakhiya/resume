@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rutvi Parakhiya – Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --green: #1e4d35;
+    --green2: #2d6a4f;
+    --green3: #52b788;
+    --green4: #d8f3dc;
+    --ink: #111a14;
+    --ink2: #374a3c;
+    --muted: #6b8070;
+    --border: #ddeae2;
+    --bg: #f7faf8;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #eef4f0;
+    padding: 32px 16px 48px;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 2px 24px rgba(30,77,53,0.10);
+  }
+
+  /* HEADER */
+  .header {
+    padding: 36px 44px 28px;
+    border-bottom: 2px solid var(--green);
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .header-role {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green2);
+    margin-bottom: 16px;
+  }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    margin-top: 4px;
+  }
+  .c-item {
+    font-size: 11.5px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 4px 14px;
+    border-right: 1px solid var(--border);
+    transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .c-item:first-child { padding-left: 0; }
+  .c-item:last-child { border-right: none; }
+  .c-item:hover { color: var(--green2); }
+  .c-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--green3);
+    flex-shrink: 0;
+  }
+
+  /* BODY */
+  .body {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    padding: 28px 22px 28px 44px;
+    border-right: 1px solid var(--border);
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 28px 44px 28px 32px;
+  }
+
+  /* SECTION */
+  .sec {
+    margin-bottom: 24px;
+  }
+  .sec:last-child { margin-bottom: 0; }
+  .sec-head {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--green2);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid var(--green);
+  }
+
+  /* SKILL */
+  .skill-group { margin-bottom: 12px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .sk-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .sk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .sk-tag {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--ink2);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 2px 7px;
+  }
+
+  /* EDU */
+  .edu-item {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; }
+  .edu-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .edu-degree {
+    font-size: 10.5px;
+    color: var(--muted);
+    margin: 2px 0;
+  }
+  .edu-year {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--green2);
+  }
+
+  /* LANG */
+  .lang-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: var(--ink2);
+  }
+  .lang-level {
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* SUMMARY */
+  .summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .sum-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--ink2);
+    line-height: 1.55;
+  }
+  .sum-bullet {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--green3);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* PROJECT */
+  .project {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .project:last-child { border-bottom: none; margin-bottom: 0; }
+  .proj-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .proj-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .proj-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green2);
+    background: var(--green4);
+    border: 1px solid #b7dfc4;
+    border-radius: 3px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+  .proj-desc {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .proj-tech {
+    font-size: 10.5px;
+    color: var(--green2);
+    font-weight: 600;
+    margin-bottom: 7px;
+  }
+  .proj-links {
+    display: flex;
+    gap: 5px;
+  }
+  .proj-link {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--green2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 3px 9px;
+    background: var(--bg);
+    transition: all 0.15s;
+  }
+  .proj-link:hover { background: var(--green2); color: white; border-color: var(--green2); }
+
+  /* PRINT */
+  .print-bar {
+    border-top: 1px solid var(--border);
+    padding: 14px 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .btn-pdf {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--green);
+    border: none;
+    border-radius: 4px;
+    padding: 9px 22px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-pdf:hover { background: var(--green2); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; max-width: 100%; }
+    .print-bar { display: none; }
+  }
+
+  @media (max-width: 620px) {
+    .body { grid-template-columns: 1fr; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
+    .content { padding: 24px 20px; }
+    .header { padding: 24px 20px 20px; }
+    .print-bar { padding: 12px 20px; }
+    .c-item:first-child { padding-left: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Rutvi Parakhiya</h1>
+    <div class="header-role">Full Stack Developer</div>
+    <nav class="contact-row">
+      <a class="c-item" href="mailto:rparakhiya2007@gmail.com"><span class="c-dot"></span>rparakhiya2007@gmail.com</a>
+      <span class="c-item"><span class="c-dot"></span>9274311609</span>
+      <span class="c-item"><span class="c-dot"></span>Ahmedabad, Gujarat</span>
+      <a class="c-item" href="https://www.linkedin.com/in/rutvi-parakhiya-96969b395/" target="_blank"><span class="c-dot"></span>LinkedIn</a>
+      <a class="c-item" href="https://github.com/RutviParakhiya2007" target="_blank"><span class="c-dot"></span>GitHub</a>
+      <a class="c-item" href="https://www.youtube.com/@RutviParakhiya07" target="_blank"><span class="c-dot"></span>YouTube</a>
+      <a class="c-item" href="https://leetcode.com/u/rutviparakhiya/" target="_blank"><span class="c-dot"></span>LeetCode</a>
+    </nav>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sec">
+        <div class="sec-head">Skills</div>
+
+        <div class="skill-group">
+          <div class="sk-label">Languages</div>
+          <div class="sk-tags">
+            <span class="sk-tag">JavaScript ES6+</span>
+            <span class="sk-tag">C++</span>
+            <span class="sk-tag">C</span>
+            <span class="sk-tag">HTML5</span>
+            <span class="sk-tag">CSS3</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="sk-label">Frameworks</div>
+          <div class="sk-tags">
+            <span class="sk-tag">React.js</span>
+            <span class="sk-tag">Tailwind CSS</span>
+            <span class="sk-tag">Node.js</span>
+            <span class="sk-tag">Express.js</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="sk-label">Databases</div>
+          <div class="sk-tags">
+            <span class="sk-tag">MongoDB</span>
+            <span class="sk-tag">Mongoose</span>
+            <span class="sk-tag">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="sk-label">Tools</div>
+          <div class="sk-tags">
+            <span class="sk-tag">Git</span>
+            <span class="sk-tag">GitHub</span>
+            <span class="sk-tag">Postman</span>
+            <span class="sk-tag">Vercel</span>
+            <span class="sk-tag">Netlify</span>
+            <span class="sk-tag">Render</span>
+            <span class="sk-tag">Figma</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="sk-label">UI / UX</div>
+          <div class="sk-tags">
+            <span class="sk-tag">Figma</span>
+            <span class="sk-tag">Wireframing</span>
+            <span class="sk-tag">Prototyping</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">Education</div>
+        <div class="edu-item">
+          <div class="edu-name">Swaminarayan University, Kallol</div>
+          <div class="edu-degree">B.E. Computer Engineering</div>
+          <div class="edu-year">2025 – 2029</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-name">B.A.P.S Swaminarayan School, Gondal</div>
+          <div class="edu-degree">Higher Secondary Education</div>
+          <div class="edu-year">2023 – 2025</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-name">B.A.P.S Swaminarayan School, Gondal</div>
+          <div class="edu-degree">Secondary Education</div>
+          <div class="edu-year">2021 – 2023</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">Languages</div>
+        <div class="lang-list">
+          <div class="lang-item">
+            <span>Gujarati</span>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="lang-item">
+            <span>English</span>
+            <span class="lang-level">Proficient</span>
+          </div>
+          <div class="lang-item">
+            <span>Hindi</span>
+            <span class="lang-level">Conversational</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <div class="sec">
+        <div class="sec-head">Expertise & Summary</div>
+        <div class="summary-list">
+          <div class="sum-item"><span class="sum-bullet"></span>Full stack web development with React, Node.js & Express.js</div>
+          <div class="sum-item"><span class="sum-bullet"></span>MongoDB database design & optimization</div>
+          <div class="sum-item"><span class="sum-bullet"></span>Authentication & security — JWT, role-based access control</div>
+          <div class="sum-item"><span class="sum-bullet"></span>RESTful API development & integration</div>
+          <div class="sum-item"><span class="sum-bullet"></span>UI/UX design with Figma — Wireframing & Prototyping</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">Ongoing Project</div>
+        <div class="project">
+          <div class="proj-top">
+            <div class="proj-name">Finance.com</div>
+            <div class="proj-badge">In Progress</div>
+          </div>
+          <div class="proj-desc">
+            A personal finance management platform to track emergency funds, manage investments, calculate SIP returns, monitor daily expenses, and access smart financial tools — all in one place.
+          </div>
+          <div class="proj-tech">React.js · Node.js · Express.js · MongoDB · Tailwind CSS · JWT</div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://github.com/RutviParakhiya2007" target="_blank">GitHub</a>
+            <a class="proj-link" href="#" style="opacity:0.45;pointer-events:none;">Live Soon</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">Professional Projects</div>
+        <div class="project">
+          <div class="proj-top">
+            <div class="proj-name">More coming soon</div>
+          </div>
+          <div class="proj-desc">
+            Currently building full-stack applications. Visit GitHub for latest work and contributions.
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://github.com/RutviParakhiya2007" target="_blank">View GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">Open Source & Frontend</div>
+        <div class="project">
+          <div class="proj-top">
+            <div class="proj-name">Actively contributing</div>
+          </div>
+          <div class="proj-desc">
+            Building and contributing to open source projects in the React & Node.js ecosystem.
+          </div>
+          <div class="proj-links">
+            <a class="proj-link" href="https://github.com/RutviParakhiya2007" target="_blank">GitHub</a>
+            <a class="proj-link" href="https://www.youtube.com/@RutviParakhiya07" target="_blank">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- PRINT -->
+  <div class="print-bar">
+    <button class="btn-pdf" onclick="window.print()">Download as PDF</button>
+  </div>
+
+</div>
+</body>
+</html>
