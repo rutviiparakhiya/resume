@@ -34,7 +34,7 @@
             width: 210mm;
             min-height: 297mm;
             margin: 30px auto;
-            padding: 28px 40px;
+            padding: 20px 40px 24px;
             background: var(--white);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
@@ -43,7 +43,7 @@
 
         .download-btn {
             position: absolute;
-            top: 28px;
+            top: 20px;
             right: 40px;
             display: inline-flex;
             align-items: center;
@@ -88,6 +88,7 @@
             font-size: 32px;
             font-weight: 700;
             letter-spacing: 0.5px;
+            line-height: 1.1;
             color: var(--dark);
         }
 
@@ -122,6 +123,11 @@
 
         .contact a:hover {
             color: var(--light);
+        }
+
+        /* Mobile number: no hover / no colour change on hover */
+        .contact .phone:hover {
+            color: #333333;
         }
 
         .separator {
@@ -230,13 +236,15 @@
         }
 
         .project-description {
-            margin-top: 3px;
-            font-size: 11px;
+            margin-top: 4px;
+            font-size: 10.8px;
             color: #4c4c4c;
+            line-height: 1.55;
+            text-align: justify;
         }
 
         .tech {
-            margin-top: 4px;
+            margin-top: 5px;
             font-size: 9.8px;
             color: var(--medium);
             letter-spacing: 0.2px;
@@ -276,12 +284,17 @@
         }
 
         /* ================= CERTIFICATIONS ================= */
+        /* scoped to .certifications only - doesn't touch shared .section rule */
+
+        .certifications {
+            margin-top: 14px;
+        }
 
         .certificate {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0;
+            padding: 5px 0;
             border-bottom: 1px solid #e2e2e2;
             gap: 16px;
         }
@@ -303,7 +316,7 @@
         }
 
         .certificate-provider {
-            margin-top: 2px;
+            margin-top: 1px;
             font-size: 10.2px;
             color: var(--medium);
         }
@@ -334,8 +347,8 @@
         /* ================= FOOTER ================= */
 
         .footer {
-            margin-top: 16px;
-            padding-top: 9px;
+            margin-top: 14px;
+            padding-top: 8px;
             border-top: 1px solid var(--border);
             text-align: center;
             font-size: 9px;
@@ -354,7 +367,7 @@
                 width: 210mm;
                 min-height: 297mm;
                 margin: 0;
-                padding: 28px 40px;
+                padding: 20px 40px 24px;
                 box-shadow: none;
             }
 
@@ -512,7 +525,7 @@
     </header>
 
 
-    <!-- ================= PROFESSIONAL SUMMARY ================= -->
+    <!-- ================= PROFESSIONAL SUMMARY (unchanged) ================= -->
 
     <section class="section">
 
@@ -528,7 +541,7 @@
     </section>
 
 
-    <!-- ================= TECHNICAL SKILLS ================= -->
+    <!-- ================= TECHNICAL SKILLS (unchanged) ================= -->
 
     <section class="section">
 
@@ -626,8 +639,10 @@
             </div>
 
             <p class="project-description">
-                Developed a responsive full-stack web application with frontend
-                and backend integration, implementing JWT-based authentication.
+                Developed a responsive full-stack web application with complete frontend
+                and backend integration, including JWT-based authentication and protected
+                routes. Built RESTful APIs to connect the React.js client with the Node.js
+                server, with a focus on clean UI and secure session handling.
             </p>
 
             <div class="tech">
@@ -666,9 +681,10 @@
             </div>
 
             <p class="project-description">
-                Built a React Native mobile app using Expo, designed as a task
-                management application with a clean, scrollable UI for tracking
-                daily tasks.
+                Built a React Native mobile app using Expo, designed as a personal task
+                management application with a clean, scrollable UI for creating, organizing,
+                and tracking daily tasks. Focused on reusable components and smooth navigation
+                to keep the interface consistent across every screen.
             </p>
 
             <div class="tech">
@@ -704,8 +720,10 @@
             </div>
 
             <p class="project-description">
-                Designed a luxury salon website UI in Figma, covering booking,
-                gallery, and contact pages with a clean, modern aesthetic.
+                Designed a luxury salon website UI in Figma, covering the homepage, service
+                booking flow, gallery, and contact pages with a clean, modern aesthetic.
+                Used wireframing and prototyping to map the user flow before finalizing
+                high-fidelity screens with consistent typography, spacing, and colour palette.
             </p>
 
             <div class="tech">
@@ -717,7 +735,7 @@
     </section>
 
 
-    <!-- ================= EDUCATION ================= -->
+    <!-- ================= EDUCATION (unchanged) ================= -->
 
     <section class="section">
 
@@ -766,7 +784,7 @@
 
     <!-- ================= CERTIFICATIONS ================= -->
 
-    <section class="section">
+    <section class="section certifications">
 
         <h2 class="section-title">Certifications</h2>
 
@@ -834,24 +852,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-    function downloadResume() {
+    async function downloadResume() {
         const btn = document.querySelector('.download-btn');
         const element = document.getElementById('resume');
 
+        if (!window.html2canvas || !window.jspdf) {
+            alert('PDF library load thai nathi. Internet check kari ne page reload karo.');
+            return;
+        }
+
         btn.style.display = 'none';
 
-        html2canvas(element, {
-            scale: 3.5,
-            useCORS: true,
-            allowTaint: false,
-            imageTimeout: 0,
-            backgroundColor: '#ffffff',
-            windowWidth: element.scrollWidth,
-            windowHeight: element.scrollHeight
-        }).then(function (canvas) {
+        try {
+            if (document.fonts && document.fonts.ready) {
+                await document.fonts.ready;
+            }
 
-            /* PNG keeps text sharp - JPEG compression is what was
-               causing the blurry look. */
+            const canvas = await html2canvas(element, {
+                scale: 3.5,
+                useCORS: true,
+                allowTaint: false,
+                imageTimeout: 0,
+                backgroundColor: '#ffffff',
+                windowWidth: element.scrollWidth,
+                windowHeight: element.scrollHeight
+            });
+
             const imgData = canvas.toDataURL('image/png', 1.0);
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF('p', 'mm', 'a4');
@@ -859,20 +885,18 @@
             const pageWidth = pdf.internal.pageSize.getWidth();
             const pageHeight = pdf.internal.pageSize.getHeight();
 
-            /* Resume is authored to fit exactly one A4 page, so we
-               map the full-resolution canvas directly onto the one
-               page instead of scaling it down (scaling down is what
-               produced the extra blank page + soft text before). */
+            /* Resume is authored to fit exactly one A4 page - map the
+               full-resolution canvas directly onto the single page. */
             pdf.addImage(imgData, 'PNG', 0, 0, pageWidth, pageHeight, undefined, 'FAST');
 
             pdf.save('Rutvi_Parakhiya_Resume.pdf');
 
-            btn.style.display = 'inline-flex';
-
-        }).catch(function (err) {
+        } catch (err) {
             console.error(err);
+            alert('PDF banavva ma error aavi. Firi try karo.');
+        } finally {
             btn.style.display = 'inline-flex';
-        });
+        }
     }
 </script>
 
