@@ -1,968 +1,749 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Rutvi Parakhiya | Computer Engineering Student</title>
-
-  <style>
-    :root {
-      --primary: #36454F;
-      --primary-dark: #29363E;
-      --text: #202427;
-      --text-light: #59636A;
-      --muted: #7B858B;
-      --border: #DCE2E5;
-      --border-light: #EAEDEF;
-      --surface: #F7F9FA;
-      --white: #FFFFFF;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-      background: #E9EEF1;
-      color: var(--text);
-      line-height: 1.5;
-      padding: 32px 16px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================
-       RESUME
-    ========================== */
-
-    .resume {
-      width: 210mm;
-      min-height: 297mm;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 16mm 17mm;
-      background: var(--white);
-      box-shadow: 0 16px 45px rgba(36, 48, 56, 0.10);
-    }
-
-    /* =========================
-       HEADER
-    ========================== */
-
-    .header {
-      padding-bottom: 18px;
-      border-bottom: 1.5px solid var(--primary);
-    }
-
-    .name {
-      color: var(--primary);
-      font-size: 34px;
-      line-height: 1.05;
-      font-weight: 750;
-      letter-spacing: -0.8px;
-    }
-
-    .title {
-      margin-top: 7px;
-      color: var(--text-light);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.15px;
-    }
-
-    .contact {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 5px 9px;
-      margin-top: 13px;
-      color: var(--text-light);
-      font-size: 11.5px;
-    }
-
-    .contact a {
-      color: var(--primary);
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    .contact a:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-
-    .separator {
-      color: #AAB2B7;
-    }
-
-    /* =========================
-       SECTION
-    ========================== */
-
-    .section {
-      margin-top: 18px;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 9px;
-    }
-
-    .section-title {
-      color: var(--primary);
-      font-size: 11.5px;
-      font-weight: 750;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* =========================
-       PROFESSIONAL SUMMARY
-    ========================== */
-
-    .summary {
-      max-width: 760px;
-      color: var(--text-light);
-      font-size: 12.5px;
-      line-height: 1.65;
-    }
-
-    /* =========================
-       TECHNICAL SKILLS
-    ========================== */
-
-    .skills {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .skill-row {
-      display: grid;
-      grid-template-columns: 86px 1fr;
-      column-gap: 14px;
-      align-items: baseline;
-      padding: 2px 0;
-    }
-
-    .skill-category {
-      color: var(--primary);
-      font-size: 11.5px;
-      font-weight: 700;
-    }
-
-    .skill-items {
-      color: var(--text-light);
-      font-size: 12px;
-    }
-
-    .skill-items span:not(:last-child)::after {
-      content: " • ";
-      color: #A2ABB0;
-      margin: 0 3px;
-    }
-
-    /* =========================
-       PROJECTS
-    ========================== */
-
-    .projects {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .project {
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      background: #FBFCFC;
-      transition: border-color 0.2s ease,
-                  box-shadow 0.2s ease,
-                  transform 0.2s ease;
-    }
-
-    .project:hover {
-      border-color: #B7C0C5;
-      box-shadow: 0 4px 12px rgba(54, 69, 79, 0.07);
-      transform: translateY(-1px);
-    }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .project-title {
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .project-link {
-      color: var(--primary);
-      font-size: 10.5px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .project-link:hover {
-      text-decoration: underline;
-    }
-
-    .project-description {
-      margin-top: 3px;
-      color: var(--text-light);
-      font-size: 11px;
-      line-height: 1.45;
-    }
-
-    .project-tech {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 10.5px;
-    }
-
-    /* =========================
-       EDUCATION
-    ========================== */
-
-    .education-item {
-      padding: 1px 0;
-    }
-
-    .education-main {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .degree {
-      color: var(--text);
-      font-size: 13.5px;
-      font-weight: 700;
-    }
-
-    .institution {
-      margin-top: 2px;
-      color: var(--text-light);
-      font-size: 12px;
-    }
-
-    .duration {
-      color: var(--primary);
-      font-size: 11.5px;
-      font-weight: 650;
-      white-space: nowrap;
-    }
-
-    .education-meta {
-      display: flex;
-      gap: 16px;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    /* =========================
-       ACHIEVEMENTS & CERTIFICATIONS
-    ========================== */
-
-    .achievement-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .achievement-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .achievement-item:last-child {
-      border-bottom: none;
-    }
-
-    .achievement-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .achievement-marker {
-      width: 5px;
-      height: 5px;
-      min-width: 5px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-
-    .achievement-title {
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 650;
-    }
-
-    .achievement-issuer {
-      margin-top: 1px;
-      color: var(--muted);
-      font-size: 10.5px;
-    }
-
-    .achievement-link {
-      color: var(--primary);
-      font-size: 10.5px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .achievement-link:hover {
-      text-decoration: underline;
-    }
-
-    /* =========================
-       CERTIFICATES
-    ========================== */
-
-    .certificates {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 9px;
-      margin-top: 8px;
-    }
-
-    .certificate {
-      min-height: 74px;
-      padding: 10px 11px;
-      border: 1px solid var(--border);
-      background: #FBFCFC;
-    }
-
-    .certificate-title {
-      color: var(--primary);
-      font-size: 11.5px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .certificate-info {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 10.5px;
-      line-height: 1.45;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-
-    @media (max-width: 800px) {
-
-      body {
-        padding: 0;
-        background: var(--white);
-      }
-
-      .resume {
-        width: 100%;
-        min-height: auto;
-        padding: 28px 22px;
-        box-shadow: none;
-      }
-
-      .contact {
-        justify-content: flex-start;
-      }
-
-      .skill-row {
-        grid-template-columns: 1fr;
-        row-gap: 2px;
-      }
-
-      .education-main {
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .project-top {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 3px;
-      }
-
-      .certificates {
-        grid-template-columns: 1fr;
-      }
-
-      .achievement-item {
-        align-items: flex-start;
-      }
-    }
-
-    /* =========================
-       PRINT / PDF
-    ========================== */
-
-    @page {
-      size: A4;
-      margin: 0;
-    }
-
-    @media print {
-
-      body {
-        padding: 0;
-        background: #FFFFFF;
-      }
-
-      .resume {
-        width: 210mm;
-        min-height: 297mm;
-        padding: 14mm 17mm;
-        margin: 0;
-        box-shadow: none;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      .section,
-      .education-item,
-      .project,
-      .achievement-item,
-      .certificate {
-        break-inside: avoid;
-      }
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rutvi Parakhiya | Full Stack Developer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #595959;
+            --medium: #7F7F7F;
+            --light: #A5A5A5;
+            --border: #CCCCCC;
+            --bg: #F2F2F2;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #dcdcdc;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .resume {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 30px auto;
+            padding: 34px 42px;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            border-bottom: 2px solid var(--dark);
+            padding-bottom: 18px;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--dark);
+        }
+
+        .role {
+            margin-top: 2px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--medium);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px 18px;
+            margin-top: 13px;
+            font-size: 11.5px;
+            color: #555;
+        }
+
+        .contact a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .contact a:hover {
+            color: var(--light);
+        }
+
+        .contact span {
+            white-space: nowrap;
+        }
+
+        .separator {
+            color: var(--border);
+        }
+
+        /* ================= SECTIONS ================= */
+
+        .section {
+            margin-top: 21px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: var(--border);
+        }
+
+        .summary {
+            font-size: 11.8px;
+            color: #444;
+            text-align: justify;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 35px;
+        }
+
+        .skill-row {
+            display: flex;
+            font-size: 11.2px;
+        }
+
+        .skill-title {
+            min-width: 145px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .skill-value {
+            color: #555;
+        }
+
+        /* ================= PROJECTS ================= */
+
+        .project {
+            padding: 9px 0 11px;
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .project-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .project-links a {
+            font-size: 10.5px;
+            color: var(--medium);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .project-links a:hover {
+            color: var(--dark);
+            border-bottom: 1px solid var(--dark);
+        }
+
+        .project-description {
+            margin-top: 3px;
+            font-size: 11.2px;
+            color: #4c4c4c;
+        }
+
+        .tech {
+            margin-top: 4px;
+            font-size: 10px;
+            color: var(--medium);
+            letter-spacing: 0.2px;
+        }
+
+        /* ================= EDUCATION ================= */
+
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 7px 0;
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .degree {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .institute {
+            margin-top: 2px;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .year {
+            font-size: 10.8px;
+            font-weight: 600;
+            color: var(--medium);
+            white-space: nowrap;
+        }
+
+        /* ================= CERTIFICATIONS ================= */
+
+        .certificate {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px 0;
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .certificate:last-child {
+            border-bottom: none;
+        }
+
+        .certificate a {
+            font-size: 11.3px;
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .certificate a:hover {
+            color: var(--light);
+        }
+
+        .certificate-provider {
+            font-size: 10.5px;
+            color: var(--medium);
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            margin-top: 18px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 9px;
+            color: var(--light);
+        }
+
+        /* ================= PRINT ================= */
+
+        @media print {
+
+            body {
+                background: white;
+            }
+
+            .resume {
+                width: 210mm;
+                min-height: 297mm;
+                margin: 0;
+                padding: 30px 38px;
+                box-shadow: none;
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+
+            .project-links a {
+                color: var(--medium) !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media screen and (max-width: 850px) {
+
+            .resume {
+                width: 95%;
+                margin: 15px auto;
+                padding: 25px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+            .skill-title {
+                min-width: 135px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .resume {
+                width: 100%;
+                margin: 0;
+                padding: 22px;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+
+            .contact {
+                gap: 6px 12px;
+            }
+
+            .project-header {
+                align-items: flex-start;
+            }
+
+            .education-item {
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-  <main class="resume">
+<div class="resume">
 
-
-    <!-- =========================
-         HEADER
-    ========================== -->
+    <!-- ================= HEADER ================= -->
 
     <header class="header">
 
-      <h1 class="name">
-        Rutvi Parakhiya
-      </h1>
+        <h1 class="name">Rutvi Parakhiya</h1>
 
-      <p class="title">
-        Computer Engineering Student | Full-Stack Developer
-      </p>
+        <div class="role">Full Stack Developer</div>
 
+        <div class="contact">
 
-      <div class="contact">
+            <!-- Mobile: intentionally NOT clickable -->
+            <span>+91 9274311609</span>
 
-        <a href="tel:+919274311609">
-          +91 9274311609
-        </a>
+            <span class="separator">|</span>
 
-        <span class="separator">|</span>
+            <span>
+                <a href="mailto:rparakhiya2007@gmail.com">
+                    rparakhiya2007@gmail.com
+                </a>
+            </span>
 
-        <a
-          href="https://www.linkedin.com/in/rutvi-parakhiya-96969b395"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
+            <span class="separator">|</span>
 
-        <span class="separator">|</span>
+            <span>
+                <a href="https://github.com/rutviiparakhiya"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GitHub
+                </a>
+            </span>
 
-        <a
-          href="https://github.com/rutviiparakhiya"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+            <span class="separator">|</span>
 
-        <span class="separator">|</span>
+            <span>
+                <a href="https://www.linkedin.com/in/rutvi-parakhiya-96969b395"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    LinkedIn
+                </a>
+            </span>
 
-        <a
-          href="https://leetcode.com/u/rutviparakhiya/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LeetCode
-        </a>
+            <span class="separator">|</span>
 
-        <span class="separator">|</span>
+            <span>
+                <a href="https://leetcode.com/u/rutviparakhiya/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    LeetCode
+                </a>
+            </span>
 
-        <a
-          href="https://www.youtube.com/@rutvi_parakhiya"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          YouTube
-        </a>
+            <span class="separator">|</span>
 
-      </div>
+            <span>
+                <a href="https://www.youtube.com/@rutvi_parakhiya"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    YouTube
+                </a>
+            </span>
+
+            <span class="separator">|</span>
+
+            <span>
+                <a href="https://x.com/Rutvi_Parakhiya"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    X
+                </a>
+            </span>
+
+        </div>
 
     </header>
 
 
-    <!-- =========================
-         PROFESSIONAL SUMMARY
-    ========================== -->
+    <!-- ================= PROFESSIONAL SUMMARY ================= -->
 
     <section class="section">
 
-      <div class="section-heading">
+        <h2 class="section-title">Professional Summary</h2>
 
-        <h2 class="section-title">
-          Professional Summary
-        </h2>
-
-        <div class="section-line"></div>
-
-      </div>
-
-
-      <p class="summary">
-        Computer Engineering student passionate about full-stack development,
-        problem solving, and building modern web applications. Currently
-        expanding technical expertise across frontend, backend, databases,
-        and software development tools.
-      </p>
+        <p class="summary">
+            Computer Engineering student passionate about full-stack development,
+            problem solving, and building modern web applications. Currently
+            expanding technical expertise across frontend, backend, databases,
+            and software development tools.
+        </p>
 
     </section>
 
 
-    <!-- =========================
-         TECHNICAL SKILLS
-    ========================== -->
+    <!-- ================= TECHNICAL SKILLS ================= -->
 
     <section class="section">
 
-      <div class="section-heading">
-
-        <h2 class="section-title">
-          Technical Skills
-        </h2>
-
-        <div class="section-line"></div>
-
-      </div>
-
-
-      <div class="skills">
-
-
-        <div class="skill-row">
-
-          <div class="skill-category">
-            Languages
-          </div>
-
-          <div class="skill-items">
-            <span>JavaScript ES6+</span>
-            <span>C++</span>
-            <span>C</span>
-            <span>HTML5</span>
-            <span>CSS3</span>
-          </div>
-
-        </div>
-
-
-        <div class="skill-row">
-
-          <div class="skill-category">
-            Frontend
-          </div>
-
-          <div class="skill-items">
-            <span>React.js</span>
-            <span>Next.js</span>
-            <span>Tailwind CSS</span>
-          </div>
-
-        </div>
-
-
-        <div class="skill-row">
-
-          <div class="skill-category">
-            Backend
-          </div>
-
-          <div class="skill-items">
-            <span>Node.js</span>
-            <span>Express.js</span>
-          </div>
-
-        </div>
-
-
-        <div class="skill-row">
-
-          <div class="skill-category">
-            Database
-          </div>
-
-          <div class="skill-items">
-            <span>SQL</span>
-            <span>MySQL</span>
-          </div>
-
-        </div>
-
-
-        <div class="skill-row">
-
-          <div class="skill-category">
-            UI / UX
-          </div>
-
-          <div class="skill-items">
-            <span>Figma</span>
-            <span>Wireframing</span>
-            <span>Prototyping</span>
-          </div>
-
-        </div>
-
-
-        <div class="skill-row">
-
-          <div class="skill-category">
-            Tools
-          </div>
-
-          <div class="skill-items">
-            <span>Git</span>
-            <span>GitHub</span>
-            <span>Postman</span>
-            <span>Vercel</span>
-            <span>Netlify</span>
-            <span>Render</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         PROJECTS
-    ========================== -->
-
-    <section class="section">
-
-      <div class="section-heading">
-
-        <h2 class="section-title">
-          Projects
-        </h2>
-
-        <div class="section-line"></div>
-
-      </div>
-
-
-      <div class="projects">
-
-
-        <!-- PROJECT 1 -->
-
-        <article class="project">
-
-          <div class="project-top">
-
-            <h3 class="project-title">
-              Website Clone 01
-            </h3>
-
-            <a
-              class="project-link"
-              href="https://github.com/rutviiparakhiya/clone_1github"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub ↗
-            </a>
-
-          </div>
-
-          <p class="project-description">
-            Frontend website clone developed to practice responsive layouts,
-            modern UI implementation, and frontend development fundamentals.
-          </p>
-
-          <div class="project-tech">
-            React.js • HTML • CSS • JavaScript
-          </div>
-
-        </article>
-
-
-        <!-- PROJECT 2 -->
-
-        <article class="project">
-
-          <div class="project-top">
-
-            <h3 class="project-title">
-              Website Clone 02
-            </h3>
-
-            <a
-              class="project-link"
-              href="https://github.com/rutviiparakhiya/clone_2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub ↗
-            </a>
-
-          </div>
-
-          <p class="project-description">
-            Responsive web interface clone focused on recreating a polished
-            user experience and improving frontend implementation skills.
-          </p>
-
-          <div class="project-tech">
-            React.js • HTML • CSS • JavaScript
-          </div>
-
-        </article>
-
-
-        <!-- PROJECT 3 -->
-
-        <article class="project">
-
-          <div class="project-top">
-
-            <h3 class="project-title">
-              Website Clone 03
-            </h3>
-
-            <a
-              class="project-link"
-              href="https://github.com/rutviiparakhiya/clone_3"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub ↗
-            </a>
-
-          </div>
-
-          <p class="project-description">
-            Web interface clone created to strengthen UI development,
-            component structuring, and responsive design skills.
-          </p>
-
-          <div class="project-tech">
-            React.js • HTML • CSS • JavaScript
-          </div>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         EDUCATION
-    ========================== -->
-
-    <section class="section">
-
-      <div class="section-heading">
-
-        <h2 class="section-title">
-          Education
-        </h2>
-
-        <div class="section-line"></div>
-
-      </div>
-
-
-      <div class="education-item">
-
-        <div class="education-main">
-
-          <div>
-
-            <div class="degree">
-              B.E. in Computer Engineering
+        <h2 class="section-title">Technical Skills</h2>
+
+        <div class="skills">
+
+            <div class="skill-row">
+                <div class="skill-title">Programming Languages</div>
+                <div class="skill-value">
+                    C, C++, JavaScript, TypeScript
+                </div>
             </div>
 
-            <div class="institution">
-              Swaminarayan University
+            <div class="skill-row">
+                <div class="skill-title">Frontend Development</div>
+                <div class="skill-value">
+                    HTML, CSS, React.js, Next.js
+                </div>
             </div>
 
-          </div>
+            <div class="skill-row">
+                <div class="skill-title">Backend Development</div>
+                <div class="skill-value">
+                    Node.js, Express.js
+                </div>
+            </div>
 
-          <div class="duration">
-            2025 – 2029
-          </div>
+            <div class="skill-row">
+                <div class="skill-title">Mobile Development</div>
+                <div class="skill-value">
+                    React Native
+                </div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-title">Database & Data Technologies</div>
+                <div class="skill-value">
+                    MongoDB, Redis, DBMS
+                </div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-title">UI/UX</div>
+                <div class="skill-value">
+                    Figma, Wireframing, Prototyping
+                </div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-title">Tools</div>
+                <div class="skill-value">
+                    Git, GitHub, Postman, Vercel, Netlify, Render
+                </div>
+            </div>
 
         </div>
-
-
-        <div class="education-meta">
-
-          <span>
-            Currently in 3rd Semester
-          </span>
-
-          <span>
-            CGPA: 7.14 / 10
-          </span>
-
-        </div>
-
-      </div>
 
     </section>
 
 
-    <!-- =========================
-         ACHIEVEMENTS & CERTIFICATIONS
-    ========================== -->
+    <!-- ================= PROJECTS ================= -->
 
     <section class="section">
 
-      <div class="section-heading">
-
-        <h2 class="section-title">
-          Achievements & Certifications
-        </h2>
-
-        <div class="section-line"></div>
-
-      </div>
+        <h2 class="section-title">Projects</h2>
 
 
-      <!-- LEETCODE -->
+        <!-- ROAMLY -->
 
-      <div class="achievement-list">
+        <div class="project">
 
-        <div class="achievement-item">
+            <div class="project-header">
 
-          <div class="achievement-left">
+                <div class="project-name">
+                    Roamly
+                </div>
 
-            <span class="achievement-marker"></span>
+                <div class="project-links">
+
+                    <a href="#" title="GitHub link will be added later">
+                        GitHub
+                    </a>
+
+                    <a href="#" title="Live project link will be added later">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+            <p class="project-description">
+                Developed a responsive full-stack web application with frontend
+                and backend integration, implementing JWT-based authentication
+                and modern responsive design.
+            </p>
+
+            <div class="tech">
+                React.js · MongoDB · HTML · CSS · JavaScript
+            </div>
+
+        </div>
+
+
+        <!-- MYMANAGER -->
+
+        <div class="project">
+
+            <div class="project-header">
+
+                <div class="project-name">
+                    myManager
+                </div>
+
+                <div class="project-links">
+
+                    <a href="#" title="GitHub link will be added later">
+                        GitHub
+                    </a>
+
+                    <a href="#" title="Live project link will be added later">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+            <p class="project-description">
+                Built a React Native mobile app using Expo, designed as a task
+                management application with a clean, scrollable UI for tracking
+                daily tasks.
+            </p>
+
+            <div class="tech">
+                React Native · Expo
+            </div>
+
+        </div>
+
+
+        <!-- THE GLAM -->
+
+        <div class="project">
+
+            <div class="project-header">
+
+                <div class="project-name">
+                    The Glam
+                </div>
+
+                <div class="project-links">
+
+                    <!-- Figma link will be added later -->
+
+                    <a href="#"
+                       title="Figma link will be added later">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+            <p class="project-description">
+                Designed a luxury salon website UI in Figma, covering booking,
+                gallery, and contact pages with a clean, modern aesthetic.
+            </p>
+
+            <div class="tech">
+                UI/UX · Wireframing · Prototyping
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EDUCATION ================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">Education</h2>
+
+
+        <div class="education-item">
 
             <div>
+                <div class="degree">
+                    B.E. in Computer Engineering
+                </div>
 
-              <div class="achievement-title">
-                LeetCode Achievement Medal
-              </div>
-
-              <div class="achievement-issuer">
-                LeetCode
-              </div>
-
+                <div class="institute">
+                    Swaminarayan University
+                </div>
             </div>
 
-          </div>
-
-
-          <a
-            class="achievement-link"
-            href="https://leetcode.com/medal/?showImg=0&id=10694221&isLevel=false"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Badge ↗
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- CERTIFICATES -->
-
-      <div class="certificates">
-
-
-        <!-- CERTIFICATE 1 -->
-
-        <div class="certificate">
-
-          <div class="certificate-title">
-            AI Tools & ChatGPT Workshop
-          </div>
-
-          <div class="certificate-info">
-            be10x • Certificate of Completion<br />
-            Issued: November 9, 2025
-          </div>
+            <div class="year">
+                2025 – 2029
+            </div>
 
         </div>
 
 
-        <!-- CERTIFICATE 2 -->
+        <div class="education-item">
 
-        <div class="certificate">
+            <div>
+                <div class="degree">
+                    Higher Secondary Education
+                </div>
 
-          <div class="certificate-title">
-            Protex: Hack-2-Win Hackathon
-          </div>
+                <div class="institute">
+                    B.A.P.S. Swaminarayan Gurukul
+                </div>
+            </div>
 
-          <div class="certificate-info">
-            Protege, IGDTUW • Certificate of Participation
-          </div>
+            <div class="year">
+                2023 – 2025
+            </div>
 
         </div>
-
-
-      </div>
 
     </section>
 
 
-  </main>
+    <!-- ================= CERTIFICATIONS ================= -->
+
+    <section class="section">
+
+        <h2 class="section-title">Certifications</h2>
+
+
+        <!-- Simplilearn -->
+
+        <div class="certificate">
+
+            <a href="file:///C:/Users/Acer/OneDrive/Desktop/certificates/simplelearn.pdf"
+               target="_blank">
+
+                Introduction to MERN Stack
+
+            </a>
+
+            <span class="certificate-provider">
+                Simplilearn SkillUp
+            </span>
+
+        </div>
+
+
+        <!-- SoloLearn -->
+
+        <div class="certificate">
+
+            <a href="#"
+               title="Certificate link will be added later">
+
+                Introduction to JavaScript
+
+            </a>
+
+            <span class="certificate-provider">
+                SoloLearn
+            </span>
+
+        </div>
+
+
+        <!-- be10x -->
+
+        <div class="certificate">
+
+            <a href="file:///C:/Users/Acer/OneDrive/Desktop/certificates/be10x.png"
+               target="_blank">
+
+                AI Tools & ChatGPT Workshop
+
+            </a>
+
+            <span class="certificate-provider">
+                be10x
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <div class="footer">
+        Rutvi Parakhiya · Full Stack Developer
+    </div>
+
+</div>
 
 </body>
 </html>
