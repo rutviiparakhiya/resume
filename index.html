@@ -30,24 +30,62 @@
         }
 
         .resume {
+            position: relative;
             width: 210mm;
             min-height: 297mm;
             margin: 30px auto;
-            padding: 34px 42px;
+            padding: 28px 40px;
             background: var(--white);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ================= DOWNLOAD BUTTON (top-right of resume page) ================= */
+
+        .download-btn {
+            position: absolute;
+            top: 28px;
+            right: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 18px;
+            background: var(--dark);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease;
+            z-index: 5;
+        }
+
+        .download-btn:hover {
+            background: #3f3f3f;
+        }
+
+        .download-btn:active {
+            transform: scale(0.97);
+        }
+
+        .download-btn svg {
+            width: 12px;
+            height: 12px;
         }
 
         /* ================= HEADER ================= */
 
         .header {
             border-bottom: 2px solid var(--dark);
-            padding-bottom: 18px;
-            margin-bottom: 20px;
+            padding-bottom: 15px;
+            margin-bottom: 16px;
+            padding-right: 130px;
         }
 
         .name {
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 700;
             letter-spacing: 0.5px;
             color: var(--dark);
@@ -55,7 +93,7 @@
 
         .role {
             margin-top: 2px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
             color: var(--medium);
             letter-spacing: 1.2px;
@@ -64,25 +102,26 @@
 
         .contact {
             display: flex;
-            flex-wrap: wrap;
-            gap: 7px 18px;
-            margin-top: 13px;
-            font-size: 11.5px;
-            color: #555;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 6px 10px;
+            margin-top: 11px;
+            font-size: 10.6px;
+            color: #333333;
+            overflow: hidden;
         }
 
-        .contact a {
-            color: var(--dark);
+        .contact a,
+        .contact .phone {
+            color: #333333;
+            font-weight: 600;
             text-decoration: none;
-            transition: 0.2s ease;
+            white-space: nowrap;
+            transition: color 0.2s ease;
         }
 
         .contact a:hover {
             color: var(--light);
-        }
-
-        .contact span {
-            white-space: nowrap;
         }
 
         .separator {
@@ -92,16 +131,16 @@
         /* ================= SECTIONS ================= */
 
         .section {
-            margin-top: 21px;
+            margin-top: 17px;
         }
 
         .section-title {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 9px;
             color: var(--dark);
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.4px;
@@ -115,7 +154,7 @@
         }
 
         .summary {
-            font-size: 11.8px;
+            font-size: 11.5px;
             color: #444;
             text-align: justify;
         }
@@ -125,28 +164,33 @@
         .skills {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px 35px;
+            gap: 9px 30px;
         }
 
         .skill-row {
-            display: flex;
-            font-size: 11.2px;
+            display: grid;
+            grid-template-columns: 165px 1fr;
+            column-gap: 12px;
+            align-items: flex-start;
+            padding: 2px 0;
+            font-size: 11px;
         }
 
         .skill-title {
-            min-width: 145px;
             font-weight: 600;
             color: var(--dark);
+            line-height: 1.35;
         }
 
         .skill-value {
             color: #555;
+            line-height: 1.5;
         }
 
         /* ================= PROJECTS ================= */
 
         .project {
-            padding: 9px 0 11px;
+            padding: 8px 0 9px;
             border-bottom: 1px solid #e2e2e2;
         }
 
@@ -162,40 +206,38 @@
         }
 
         .project-name {
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--dark);
         }
 
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 14px;
             flex-shrink: 0;
         }
 
         .project-links a {
-            font-size: 10.5px;
-            color: var(--medium);
+            font-size: 10.3px;
+            color: #333333;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid transparent;
+            transition: color 0.2s ease;
         }
 
         .project-links a:hover {
-            color: var(--dark);
-            border-bottom: 1px solid var(--dark);
+            color: var(--light);
         }
 
         .project-description {
             margin-top: 3px;
-            font-size: 11.2px;
+            font-size: 11px;
             color: #4c4c4c;
         }
 
         .tech {
             margin-top: 4px;
-            font-size: 10px;
+            font-size: 9.8px;
             color: var(--medium);
             letter-spacing: 0.2px;
         }
@@ -206,7 +248,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 7px 0;
+            padding: 6px 0;
             border-bottom: 1px solid #e2e2e2;
         }
 
@@ -215,19 +257,19 @@
         }
 
         .degree {
-            font-size: 12px;
+            font-size: 11.8px;
             font-weight: 700;
             color: var(--dark);
         }
 
         .institute {
             margin-top: 2px;
-            font-size: 11px;
+            font-size: 10.8px;
             color: #555;
         }
 
         .year {
-            font-size: 10.8px;
+            font-size: 10.6px;
             font-weight: 600;
             color: var(--medium);
             white-space: nowrap;
@@ -239,36 +281,61 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 7px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #e2e2e2;
+            gap: 16px;
         }
 
         .certificate:last-child {
             border-bottom: none;
         }
 
-        .certificate a {
-            font-size: 11.3px;
-            font-weight: 600;
-            color: var(--dark);
-            text-decoration: none;
-            transition: 0.2s ease;
+        .certificate-left {
+            display: flex;
+            flex-direction: column;
         }
 
-        .certificate a:hover {
-            color: var(--light);
+        .certificate-name {
+            font-size: 11.2px;
+            font-weight: 600;
+            color: #333333;
+            text-decoration: none;
         }
 
         .certificate-provider {
-            font-size: 10.5px;
+            margin-top: 2px;
+            font-size: 10.2px;
             color: var(--medium);
+        }
+
+        .certificate-view {
+            font-size: 10.5px;
+            font-weight: 600;
+            color: var(--light);
+            text-decoration: none;
+            white-space: nowrap;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        /* When a real link is ready, add class "is-active" to .certificate-view
+           to enable the hover colour + pointer cursor. */
+        .certificate-view.is-active {
+            color: #333333;
+            pointer-events: auto;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .certificate-view.is-active:hover {
+            color: var(--light);
         }
 
         /* ================= FOOTER ================= */
 
         .footer {
-            margin-top: 18px;
-            padding-top: 10px;
+            margin-top: 16px;
+            padding-top: 9px;
             border-top: 1px solid var(--border);
             text-align: center;
             font-size: 9px;
@@ -287,17 +354,17 @@
                 width: 210mm;
                 min-height: 297mm;
                 margin: 0;
-                padding: 30px 38px;
+                padding: 28px 40px;
                 box-shadow: none;
+            }
+
+            .download-btn {
+                display: none !important;
             }
 
             a {
                 color: inherit !important;
                 text-decoration: none !important;
-            }
-
-            .project-links a {
-                color: var(--medium) !important;
             }
 
             @page {
@@ -313,16 +380,21 @@
             .resume {
                 width: 95%;
                 margin: 15px auto;
-                padding: 25px;
+                padding: 22px;
             }
 
             .skills {
                 grid-template-columns: 1fr;
-                gap: 7px;
+                gap: 9px;
             }
 
-            .skill-title {
-                min-width: 135px;
+            .skill-row {
+                grid-template-columns: 150px 1fr;
+            }
+
+            .contact {
+                flex-wrap: wrap;
+                overflow: visible;
             }
         }
 
@@ -331,15 +403,11 @@
             .resume {
                 width: 100%;
                 margin: 0;
-                padding: 22px;
+                padding: 20px;
             }
 
             .name {
-                font-size: 28px;
-            }
-
-            .contact {
-                gap: 6px 12px;
+                font-size: 26px;
             }
 
             .project-header {
@@ -349,13 +417,31 @@
             .education-item {
                 gap: 15px;
             }
+
+            .header {
+                padding-right: 0;
+            }
+
+            .download-btn {
+                position: static;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="resume">
+<div class="resume" id="resume">
+
+    <!-- ================= DOWNLOAD BUTTON ================= -->
+
+    <button class="download-btn" onclick="downloadResume()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"></path>
+        </svg>
+        Download PDF
+    </button>
 
     <!-- ================= HEADER ================= -->
 
@@ -367,66 +453,59 @@
 
         <div class="contact">
 
-            <!-- Mobile: intentionally NOT clickable -->
-            <span>+91 9274311609</span>
+            <a class="phone" href="tel:+919274311609">+91 9274311609</a>
 
             <span class="separator">|</span>
 
-            <span>
-                <a href="mailto:rparakhiya2007@gmail.com">
-                    rparakhiya2007@gmail.com
-                </a>
-            </span>
+            <a href="mailto:rparakhiya2007@gmail.com">
+                rparakhiya2007@gmail.com
+            </a>
 
             <span class="separator">|</span>
 
-            <span>
-                <a href="https://github.com/rutviiparakhiya"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    GitHub
-                </a>
-            </span>
+            <a href="#" title="Portfolio link will be added later">
+                Portfolio
+            </a>
 
             <span class="separator">|</span>
 
-            <span>
-                <a href="https://www.linkedin.com/in/rutvi-parakhiya-96969b395"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    LinkedIn
-                </a>
-            </span>
+            <a href="https://github.com/rutviiparakhiya"
+               target="_blank"
+               rel="noopener noreferrer">
+                GitHub
+            </a>
 
             <span class="separator">|</span>
 
-            <span>
-                <a href="https://leetcode.com/u/rutviparakhiya/"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    LeetCode
-                </a>
-            </span>
+            <a href="https://www.linkedin.com/in/rutvi-parakhiya-96969b395"
+               target="_blank"
+               rel="noopener noreferrer">
+                LinkedIn
+            </a>
 
             <span class="separator">|</span>
 
-            <span>
-                <a href="https://www.youtube.com/@rutvi_parakhiya"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    YouTube
-                </a>
-            </span>
+            <a href="https://leetcode.com/u/rutviparakhiya/"
+               target="_blank"
+               rel="noopener noreferrer">
+                LeetCode
+            </a>
 
             <span class="separator">|</span>
 
-            <span>
-                <a href="https://x.com/Rutvi_Parakhiya"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    X
-                </a>
-            </span>
+            <a href="https://www.youtube.com/@rutvi_parakhiya"
+               target="_blank"
+               rel="noopener noreferrer">
+                YouTube
+            </a>
+
+            <span class="separator">|</span>
+
+            <a href="https://x.com/Rutvi_Parakhiya"
+               target="_blank"
+               rel="noopener noreferrer">
+                X
+            </a>
 
         </div>
 
@@ -486,7 +565,7 @@
             </div>
 
             <div class="skill-row">
-                <div class="skill-title">Database & Data Technologies</div>
+                <div class="skill-title">Database &amp;<br>Data Technologies</div>
                 <div class="skill-value">
                     MongoDB, Redis, DBMS
                 </div>
@@ -538,14 +617,17 @@
                         View
                     </a>
 
+                    <a href="#" title="YouTube link will be added later">
+                        YouTube
+                    </a>
+
                 </div>
 
             </div>
 
             <p class="project-description">
                 Developed a responsive full-stack web application with frontend
-                and backend integration, implementing JWT-based authentication
-                and modern responsive design.
+                and backend integration, implementing JWT-based authentication.
             </p>
 
             <div class="tech">
@@ -573,6 +655,10 @@
 
                     <a href="#" title="Live project link will be added later">
                         View
+                    </a>
+
+                    <a href="#" title="YouTube link will be added later">
+                        YouTube
                     </a>
 
                 </div>
@@ -604,11 +690,13 @@
 
                 <div class="project-links">
 
-                    <!-- Figma link will be added later -->
-
                     <a href="#"
                        title="Figma link will be added later">
                         View
+                    </a>
+
+                    <a href="#" title="YouTube link will be added later">
+                        YouTube
                     </a>
 
                 </div>
@@ -687,16 +775,16 @@
 
         <div class="certificate">
 
-            <a href="file:///C:/Users/Acer/OneDrive/Desktop/certificates/simplelearn.pdf"
-               target="_blank">
+            <div class="certificate-left">
+                <a class="certificate-name"
+                   href="file:///C:/Users/Acer/OneDrive/Desktop/certificates/simplelearn.pdf"
+                   target="_blank">
+                    Introduction to MERN Stack
+                </a>
+                <span class="certificate-provider">Simplilearn SkillUp</span>
+            </div>
 
-                Introduction to MERN Stack
-
-            </a>
-
-            <span class="certificate-provider">
-                Simplilearn SkillUp
-            </span>
+            <a class="certificate-view" href="#" title="Certificate link will be added later">View</a>
 
         </div>
 
@@ -705,16 +793,14 @@
 
         <div class="certificate">
 
-            <a href="#"
-               title="Certificate link will be added later">
+            <div class="certificate-left">
+                <a class="certificate-name" href="#" title="Certificate link will be added later">
+                    Introduction to JavaScript
+                </a>
+                <span class="certificate-provider">SoloLearn</span>
+            </div>
 
-                Introduction to JavaScript
-
-            </a>
-
-            <span class="certificate-provider">
-                SoloLearn
-            </span>
+            <a class="certificate-view" href="#" title="Certificate link will be added later">View</a>
 
         </div>
 
@@ -723,16 +809,16 @@
 
         <div class="certificate">
 
-            <a href="file:///C:/Users/Acer/OneDrive/Desktop/certificates/be10x.png"
-               target="_blank">
+            <div class="certificate-left">
+                <a class="certificate-name"
+                   href="file:///C:/Users/Acer/OneDrive/Desktop/certificates/be10x.png"
+                   target="_blank">
+                    AI Tools &amp; ChatGPT Workshop
+                </a>
+                <span class="certificate-provider">be10x</span>
+            </div>
 
-                AI Tools & ChatGPT Workshop
-
-            </a>
-
-            <span class="certificate-provider">
-                be10x
-            </span>
+            <a class="certificate-view" href="#" title="Certificate link will be added later">View</a>
 
         </div>
 
@@ -744,6 +830,51 @@
     </div>
 
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    function downloadResume() {
+        const btn = document.querySelector('.download-btn');
+        const element = document.getElementById('resume');
+
+        btn.style.display = 'none';
+
+        html2canvas(element, {
+            scale: 3.5,
+            useCORS: true,
+            allowTaint: false,
+            imageTimeout: 0,
+            backgroundColor: '#ffffff',
+            windowWidth: element.scrollWidth,
+            windowHeight: element.scrollHeight
+        }).then(function (canvas) {
+
+            /* PNG keeps text sharp - JPEG compression is what was
+               causing the blurry look. */
+            const imgData = canvas.toDataURL('image/png', 1.0);
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+
+            /* Resume is authored to fit exactly one A4 page, so we
+               map the full-resolution canvas directly onto the one
+               page instead of scaling it down (scaling down is what
+               produced the extra blank page + soft text before). */
+            pdf.addImage(imgData, 'PNG', 0, 0, pageWidth, pageHeight, undefined, 'FAST');
+
+            pdf.save('Rutvi_Parakhiya_Resume.pdf');
+
+            btn.style.display = 'inline-flex';
+
+        }).catch(function (err) {
+            console.error(err);
+            btn.style.display = 'inline-flex';
+        });
+    }
+</script>
 
 </body>
 </html>
