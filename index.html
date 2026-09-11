@@ -291,7 +291,7 @@ a {
 }
 
 .education-item + .education-item {
-    margin-top: 1px;
+    margin-top: 0;
 }
 
 .education-row {
@@ -304,13 +304,35 @@ a {
 
 .degree {
     min-width: 0;
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 150px 25px minmax(0, 1fr);
+    column-gap: 0;
+    align-items: baseline;
+    white-space: nowrap;
     font-size: 11.45px;
     font-weight: 700;
     line-height: 1.35;
     color: var(--dark);
 }
 
+.degree-title {
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.degree .sep {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 0;
+    text-align: center;
+    color: var(--light);
+    font-weight: 600;
+}
+
 .edu-institute {
+    min-width: 0;
+    white-space: nowrap;
     font-family: var(--body-font);
     font-size: 11px;
     font-weight: 400;
@@ -320,6 +342,7 @@ a {
 
 .year {
     flex: 0 0 auto;
+    margin-left: auto;
     font-size: 10.6px;
     font-weight: 600;
     color: var(--contact-color);
@@ -358,11 +381,24 @@ a {
 
 .achievement-text {
     min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
     font-family: var(--body-font);
     font-size: 11.3px;
     font-weight: 400;
     color: #555555;
     line-height: 1.4;
+}
+
+.achievement-text::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--dark);
+    flex: 0 0 5px;
+    margin-top: 5px;
 }
 
 .achievement-view {
@@ -404,14 +440,16 @@ a {
 }
 
 .certificate-name-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 150px 25px minmax(0, 1fr);
+    column-gap: 0;
     align-items: baseline;
-    flex-wrap: nowrap;
     min-width: 0;
     line-height: 1.25;
 }
 
 .certificate-name {
+    min-width: 0;
     font-size: 11.3px;
     font-weight: 650;
     color: var(--dark);
@@ -419,20 +457,23 @@ a {
     white-space: nowrap;
 }
 
+.certificate-name-row .sep {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 0;
+    text-align: center;
+    color: var(--light);
+    font-weight: 600;
+}
+
 .certificate-platform {
+    min-width: 0;
     font-family: var(--body-font);
     font-size: 10.9px;
     font-weight: 400;
     color: #555555;
     line-height: 1.4;
     white-space: nowrap;
-}
-
-.sep {
-    display: inline-block;
-    margin: 0 6px;
-    color: var(--light);
-    font-weight: 600;
 }
 
 .certificate-desc {
@@ -955,11 +996,17 @@ a {
             <div class="education-row">
 
                 <div class="degree">
-                    B.E. in Computer Engineering
+
+                    <span class="degree-title">
+                        B.E. in Computer Engineering
+                    </span>
+
                     <span class="sep">–</span>
+
                     <span class="edu-institute">
                         Shree Vishwamangal Swaminarayan University
                     </span>
+
                 </div>
 
                 <div class="year">
@@ -980,11 +1027,17 @@ a {
             <div class="education-row">
 
                 <div class="degree">
-                    Higher Secondary Education
+
+                    <span class="degree-title">
+                        Higher Secondary Education
+                    </span>
+
                     <span class="sep">–</span>
+
                     <span class="edu-institute">
                         B.A.P.S. Swaminarayan Vidyamandir Gurukul
                     </span>
+
                 </div>
 
                 <div class="year">
@@ -1015,7 +1068,9 @@ a {
         <article class="achievement">
 
             <div class="achievement-text">
-                Earned GitHub Pull Shark badge (x2) for merged pull requests
+                <span>
+                    Earned GitHub Pull Shark badge (x2) for merged pull requests
+                </span>
             </div>
 
             <a
@@ -1031,7 +1086,9 @@ a {
         <article class="achievement">
 
             <div class="achievement-text">
-                Solved 120+ problems on LeetCode, including a 50-Day Streak badge for consistent daily practice
+                <span>
+                    Solved 120+ problems on LeetCode, including a 50-Day Streak badge for consistent daily practice
+                </span>
             </div>
 
             <a
